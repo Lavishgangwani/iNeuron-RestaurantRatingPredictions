@@ -1,5 +1,3 @@
-Certainly! Here's a template for a `README.md` file tailored for a machine learning project focused on sensor fault detection:
-
 ---
 
 # Sensor Fault Detection with Machine Learning
