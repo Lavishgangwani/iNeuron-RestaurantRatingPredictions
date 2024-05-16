@@ -24,6 +24,7 @@ We utilize a publicly available dataset [provide link or description of the data
 - Pandas
 - Scikit-learn
 - Matplotlib
+- Seaborn
 - [additional dependencies]
 
 ## Getting Started
