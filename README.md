@@ -19,13 +19,14 @@ We utilize a publicly available dataset [provide link or description of the data
 
 ## Dependencies
 
-- Python (>=3.6)
+- Python (3.8.19)
 - NumPy
 - Pandas
 - Scikit-learn
 - Matplotlib
 - Seaborn
-- [additional dependencies]
+- catboost
+- xgboost
 
 ## Getting Started
 
