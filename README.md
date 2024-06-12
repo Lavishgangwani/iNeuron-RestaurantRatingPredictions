@@ -44,5 +44,5 @@ dill
 ## Deployment Techniques
 * Deployment to AWS: The final step is to deploy the All files to an AWS server. This step is done by us using the ubuntu server where we deployed our model using the winSCP to connect the AWS server(EC2).
 
-## 🎯Project Created BY
-[@Gajender](https://linkedin.com/in/lavish-gangwani)
+## 🎯Project Created by
+[@Lavish Gangwani](https://linkedin.com/in/lavish-gangwani)
