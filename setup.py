@@ -23,7 +23,7 @@ def get_requirements(file_path:str)->List[str]:
 
 
 setup(
-    name="sensor_fault_detection",
+    name="iNeuron- Restaurant Rating Prediction",
     version="0.0.1",
     author="Lavish",
     author_email="Lavishgangwani22@gmail.com",
