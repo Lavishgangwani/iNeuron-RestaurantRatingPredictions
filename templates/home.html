@@ -1,14 +1,12 @@
-#home.html
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zomato rating prediction</title>
+    <title>Zomato Rating Prediction</title>
 </head>
-<body >
+<body>
     <img src="https://user-images.githubusercontent.com/92681972/233918490-f22e93c9-49fa-40a8-8e76-ad996c29be70.png" alt="Flowers in Chania">
     <h1 style="color: red;text-align: center;">
         Zomato
@@ -16,21 +14,21 @@
     <h3 style="color: green;text-align: center;">
         Here Fill the Fields for Predict the Rating of the restaurant.
     </h3>
-    <form action="predict" method="post">
+    <form action="/predictdata" method="post">
         <label for="online_order">Online Order</label>
         <select id="online_order" name="online_order">
             <option value="Yes">Yes</option>
             <option value="No">No</option>
         </select>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        <label for="book_table">Book  Table</label>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <label for="book_table">Book Table</label>
         <select id="book_table" name="book_table">
             <option value="Yes">Yes</option>
             <option value="No">No</option>
         </select>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <label for="votes">Votes</label>
         <input type="number" id="votes" name="votes">
         <br>
@@ -60,11 +58,11 @@
             <option value="Mess">Mess</option>
             <option value="Pub, Casual Dining">Pub, Casual Dining</option>
         </select>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         <label for="cost">Cost</label>
         <input type="number" id="cost" name="cost">
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp; 
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;
         <label for="type">Type</label>
         <select id="type" name="type">
             <option value="Delivery">Delivery</option>
@@ -75,10 +73,10 @@
             <option value="Buffet">Buffet</option>
             <option value="Pubs and bars">Pubs and bars</option>
         </select>
-            <br>
-            <br>
-            <label for="city">City</label>
-            <select id="city" name="city">
+        <br>
+        <br>
+        <label for="city">City</label>
+        <select id="city" name="city">
             <option value="Banashankari">Banashankari</option>
             <option value="Bannerghatta Road">Bannerghatta Road</option>
             <option value="Basavanagudi">Basavanagudi</option>
@@ -98,7 +96,7 @@
             <option value="Koramangala 4th Block">Koramangala 4th Block</option>
             <option value="Koramangala 5th Block">Koramangala 5th Block</option>
             <option value="Koramangala 6th Block">Koramangala 6th Block</option>
-            <option value="oramangala 7th Block">oramangala 7th Block</option>
+            <option value="Koramangala 7th Block">Koramangala 7th Block</option>
             <option value="Lavelle Road">Lavelle Road</option>
             <option value="Malleshwaram">Malleshwaram</option>
             <option value="Marathahalli">Marathahalli</option>
@@ -112,23 +110,17 @@
         </select>
         <br>
         <br>
-        <br>
         <p style="color: grey;text-align: center;">
             Press Submit for the Prediction
         </p>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        &nbsp; &nbsp; &nbsp;
-        <label for="predict" style="color: green;text-align: center;">Submit</label>
-        <input type="submit" id="predict" name="predict" style="color: grey;text-align:center;">
-
-
+        <div style="text-align: center;">
+            <input type="submit" id="predict" name="predict" value="Submit" style="color: grey;">
+        </div>
     </form>
+    {% if results %}
     <h1 style="color: blueviolet;text-align: center;">
-        Rating of the Restaurant is {{ pred }}
-
+        Rating of the Restaurant is {{ results }}
     </h1>
-    
+    {% endif %}
 </body>
 </html>

@@ -11,9 +11,8 @@ from sklearn.ensemble import (
     ExtraTreesRegressor,
     BaggingRegressor
 )
-from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
@@ -50,9 +49,6 @@ class ModelTrainer:
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
-                "Ridge Regression": Ridge(),
-                "Lasso Regression": Lasso(),
-                "KNeighbors Regressor": KNeighborsRegressor(),
                 "SVR": SVR(),
                 "XGBRegressor": XGBRegressor(),
                 "CatBoost Regressor": CatBoostRegressor(verbose=0),
@@ -69,7 +65,7 @@ class ModelTrainer:
                     'min_samples_leaf': [1, 2, 5]
                 },
                 "Random Forest": {
-                    'n_estimators': [50, 100, 200],
+                    'n_estimators': [40, 50, 75, 90, 100, 125, 140, 150, 180, 200 , 235, 256],
                     #'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
                     #'max_features': ['auto', 'sqrt', 'log2'],
                     'max_depth': [None, 10, 20, 30, 40, 50],

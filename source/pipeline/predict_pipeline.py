@@ -1,102 +1,57 @@
-# predict_pipeline.py
-
-from source.logger import logging
-from source.exception import CustomException
-import numpy as np
+import sys
 import pandas as pd
+from source.exception import CustomException
 from source.utils import load_object
+import os
+from source.logger import logging
 
-class Prediction:
-    """
-    A class for making predictions using a pre-trained model and preprocessor.
-    """
 
-    def __init__(self, online_order, book_table, votes, rest_type, cost, type, city):
-        """
-        Initialize the Prediction class with the provided inputs.
-        
-        Args:
-            online_order (str): Whether the restaurant accepts online orders.
-            book_table (str): Whether the restaurant allows table booking.
-            votes (int): Number of votes the restaurant has received.
-            rest_type (str): Type of restaurant.
-            cost (float): Approximate cost for two people.
-            type (str): Type of place (e.g., dine-out, delivery).
-            city (str): City where the restaurant is located.
-        """
-        self.online_order = online_order
-        self.book_table = book_table
-        self.votes = votes
-        self.rest_type = rest_type
-        self.cost = cost
-        self.type = type
-        self.city = city
-        logging.info("Initialized Prediction class with input data.")
+class PredictPipeline:
+    def __init__(self):
+        pass
 
-    def get_dataframe(self):
-        """
-        Convert the input data into a DataFrame suitable for the model.
-        
-        Returns:
-            pd.DataFrame: DataFrame containing the input data.
-        """
+    def predict(self,features):
         try:
-            # Aggregate input data into a list
-            data_points = [
-                self.online_order,
-                self.book_table,
-                self.votes,
-                self.rest_type,
-                self.cost,
-                self.type,
-                self.city
-            ]
-            
-            # Reshape the data to fit into a single row DataFrame
-            dp = np.array(data_points).reshape(1, -1)
-            logging.info(f"Reshaped data points for DataFrame: {dp}")
-            
-            # Define column names
-            column_names = ["online_order", "book_table", "votes", "rest_type", "cost", "type", "city"]
-            
-            # Create DataFrame
-            input_df = pd.DataFrame(dp, columns=column_names)
-            logging.info("Created DataFrame for model input.")
-            return input_df
+            model_path=os.path.join("artifacts","model.pkl")
+            preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
+            print("Before Loading")
+            model=load_object(file_path=model_path)
+            preprocessor=load_object(file_path=preprocessor_path)
+            print("After Loading")
+            data_scaled=preprocessor.transform(features)
+            preds=model.predict(data_scaled)
+            return preds
+        
+        except Exception as e:
+            raise CustomException(e,sys)
+
+
+
+class CustomData:
+    def __init__(self,online_order,book_table,votes,rest_type,cost,type,city):
+        self.online_order=online_order
+        self.book_table=book_table
+        self.votes=votes
+        self.rest_type=rest_type
+        self.cost=cost
+        self.type=type
+        self.city=city
+        logging.info("get all the data")
+
+    def get_data_as_data_frame(self):
+        try:
+            custom_data_input_dict = {
+                "online_order": [self.online_order],
+                "book_table": [self.book_table],
+                "votes": [self.votes],
+                "rest_type": [self.rest_type],
+                "cost": [self.cost],
+                "type": [self.type],
+                "city": [self.city],
+            }
+
+            return pd.DataFrame(custom_data_input_dict)
 
         except Exception as e:
-            logging.error(f"Error in get_dataframe: {e}")
-            raise CustomException(e)
-
-    def predict_rating(self, preprocessor_path, model_path):
-        """
-        Predict the rating using the pre-trained model and preprocessor.
+            raise CustomException(e, sys)
         
-        Args:
-            preprocessor_path (str): Path to the preprocessor object file.
-            model_path (str): Path to the trained model object file.
-        
-        Returns:
-            float: Predicted rating.
-        """
-        try:
-            # Load preprocessor and model
-            preprocessor = load_object(preprocessor_path)
-            model = load_object(model_path)
-            logging.info("Loaded preprocessor and model.")
-
-            # Get input data as DataFrame
-            new_df = self.get_dataframe()
-
-            # Preprocess the input data
-            new_df_array = preprocessor.transform(new_df)
-            logging.info("Transformed input data using preprocessor.")
-
-            # Predict the rating
-            prediction = model.predict(new_df_array)
-            logging.info(f"Model prediction: {prediction[0]}")
-            return prediction[0]
-
-        except Exception as e:
-            logging.error(f"Error in predict_rating: {e}")
-            raise CustomException(e)
