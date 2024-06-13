@@ -1,10 +1,10 @@
 # predict_pipeline.py
 
-from logger import logging
-from exception import CustomException
+from source.logger import logging
+from source.exception import CustomException
 import numpy as np
 import pandas as pd
-from utils import load_object
+from source.utils import load_object
 
 class Prediction:
     """
