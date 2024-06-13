@@ -1,48 +1,98 @@
-# Zomato Bangalore Restaurants
-![image](https://user-images.githubusercontent.com/92681972/233918490-f22e93c9-49fa-40a8-8e76-ad996c29be70.png)
 
+---
 
-## Library Used
- There will be file named requirement.txt which will contain all these libraries used in project.
- ```
- pandas
-numpy
-seaborn
-matplotlib
-scikit-learn
-xgboost
-flask
-dill
- ```
-*** 
- ## Structure Used
- ### There are structure used for different-different work:
- * ```setup.py```This contains all details about the Project.
- * ```requirements.txt``` Contains the all the libraries used in the project.
- * ```logger.py``` is responsible for the log all the information whatever is happening in the project at which perticular time or file.
- * ```exception.py``` is responsible for the give the Customexception when an error in any file, So it give the file_name,Lineno and error also.
- * ```.gitignore``` will add all the files which we don't want to push on the github.
- * ```readme.md``` contain general informtion about the project steps and requiremnts for further explaination.
- * ```data```contain the dataset.
- * ```src``` contain many subfolder. we need to give a ```__init__.py``` file in each directory i.e. we can use each file as a module.
- * ```src/data_ingestion.py``` responsible for the data ingestion from many different-different source like  ***kaggle*** ,***mongodb*** or ***MySQL*** etc. it split the data into train and test and store them in a perticular ```Artifacts``` folder.
- * ```src/data_transformation.py```responsible for the transform the categorical values into vectors. Also used in Scaling and Handle the Missing values and return a preprocessor which transform the data for the ***Machine Learning Models***.
- * ```src/Model_trainer.py``` is responsible for the model training and Hyperparameter tuning it return a Model Pickle file which is train on the data and used for the further Prediction.
- * ```src/Prediction_Pipeline.py``` is responsible for the Creating the Pipeline using the ```app.py``` and ```utils.py``` for the Creating a Web Page for the prediction for the new data.
- * ```utils.py``` is used for creating and storing the common function which are used whole through out the Project.
- * ```app.py``` is web app file which interact with user and take the input for new datapoints from the user and show the output by using the pre-trained model.
- 
+# Zomato Bangalore Restaurants Rating Prediction
 
-## 👨🏻‍💻Run Locally
-* Before the following steps make sure you have git, Anaconda or miniconda installed on your system
-* Clone the complete project with git clone https://github.com/Lavishgangwani/iNeuron-RestaurantRatingPredictions.git or you can just download the code and unzip it.
-* Once the project is cloned, open VSCode prompt in the directory where the project was cloned and paste the following block ```python venv -m myenv python=3.8.19``` after that 
-* ```myenv/Scripts/Activate.ps1```
-* ```pip install -r requirements.txt``` And finally run the project with ```python app.py```.
-* Open the localhost url provided after running app.py and now you can use the project locally in your web browser or put ```http://127.0.0.1:5000``` which is your local host.
+![Project Screenshot](https://user-images.githubusercontent.com/92681972/233918490-f22e93c9-49fa-40a8-8e76-ad996c29be70.png)
 
-## Deployment Techniques
-* Deployment to AWS: The final step is to deploy the All files to an AWS server. This step is done by us using the ubuntu server where we deployed our model using the winSCP to connect the AWS server(EC2).
+This project predicts restaurant ratings in Bangalore using machine learning techniques.
 
-## 🎯Project Created by
-[@Lavish Gangwani](https://linkedin.com/in/lavish-gangwani)
+## Overview
+
+This repository contains the code for predicting restaurant ratings in Bangalore using various machine learning models. The project involves data ingestion, preprocessing, model training, and deployment of a web application for user interaction.
+
+## Libraries Used
+
+The project relies on several Python libraries, all of which are listed in `requirements.txt`. To install the dependencies, run:
+
+```bash
+pip install -r requirements.txt
+```
+
+- `pandas`: Data manipulation and analysis.
+- `numpy`: Numerical operations on arrays and matrices.
+- `seaborn`, `matplotlib`: Data visualization libraries.
+- `scikit-learn`: Machine learning toolkit for data mining and analysis.
+- `xgboost`: Gradient boosting library for optimized distributed gradient boosting.
+- `flask`: Micro web framework for building web applications in Python.
+- `dill`: Serialization library for Python objects.
+- `streamlit`: Open-source app framework for machine learning and data science projects.
+
+## Project Structure
+
+### Files and Directories
+
+- `setup.py`: Project setup details.
+- `requirements.txt`: Dependency list for easy installation.
+- `source/logger.py`: Logging configuration for the project.
+- `source/exception.py`: Custom exception handling for error tracking.
+- `.gitignore`: Specifies files and directories ignored by Git.
+- `README.md`: General project information and setup instructions.
+- `data/`: Directory for dataset storage.
+- `source/`: Source code directory.
+  - `__init__.py`: Enables module usage.
+  - `source/components/data_ingestion.py`: Manages data ingestion from various sources.
+  - `source/components/data_transformation.py`: Handles data preprocessing and transformation.
+  - `source/components/model_trainer.py`: Trains machine learning models and performs hyperparameter tuning.
+  - `source/pipeline/prediction_pipeline.py`: Creates a web application using `app.py` and `utils.py`.
+  - `source/utils.py`: Stores common functions used throughout the project.
+  - `application.py`: Streamlit application for user interaction and prediction.
+
+## 🚀 Run Locally
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Lavishgangwani/iNeuron-RestaurantRatingPredictions.git
+   ```
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd iNeuron-RestaurantRatingPredictions
+   ```
+
+3. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv myenv
+   myenv\Scripts\activate (Windows)
+   source myenv/bin/activate (Mac/Linux)
+   ```
+
+4. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Run the Streamlit application:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+6. Open a web browser and go to the local Streamlit URL provided after running the above command to use the application locally.
+
+## Deployment
+
+The project is deployed using Streamlit and can be accessed publicly via the following link: [Zomato Bangalore Restaurants Prediction App](https://ineuron-restaurantratingpredictions-lavishgangwani22.streamlit.app/).
+
+## 🎯 Project Created by
+
+[Lavish Gangwani](https://linkedin.com/in/lavish-gangwani)  
+Email: lavishgangwani22@gmail.com
+
+---
