@@ -72,18 +72,21 @@ city = st.selectbox("City", [
     "Sarjapur Road", "Whitefield"
 ])
 
-# Predict button
+# Check if all fields are filled before predicting
 if st.button("Predict Rating"):
-    # Create a CustomData instance with the input values
-    custom_data = CustomData(
-        online_order=online_order,
-        book_table=book_table,
-        votes=votes,
-        rest_type=rest_type,
-        cost=cost,
-        type=type,
-        city=city
-    )
+    if online_order == "" or book_table == "" or rest_type == "" or type == "" or city == "":
+        st.warning("Please fill all fields.")
+    else:
+        # Create a CustomData instance with the input values
+        custom_data = CustomData(
+            online_order=online_order,
+            book_table=book_table,
+            votes=votes,
+            rest_type=rest_type,
+            cost=cost,
+            type=type,
+            city=city
+        )
     
     # Get the DataFrame representation of the input data
     data = custom_data.get_data_as_data_frame()
