@@ -74,9 +74,8 @@ city = st.selectbox("City", [
 
 # Check if all fields are filled before predicting
 if st.button("Predict Rating"):
-    if online_order == "" or book_table == "" or rest_type == "" or type == "" or city == "":
-        st.warning("Please fill all fields.")
-    else:
+    # Check if all fields are filled
+    if online_order and book_table and votes is not None and rest_type and cost is not None and type and city:
         # Create a CustomData instance with the input values
         custom_data = CustomData(
             online_order=online_order,
@@ -87,17 +86,18 @@ if st.button("Predict Rating"):
             type=type,
             city=city
         )
-    
-    # Get the DataFrame representation of the input data
-    data = custom_data.get_data_as_data_frame()
-    
-    # Create a PredictPipeline instance and make a prediction
-    predict_pipeline = PredictPipeline()
-    prediction = predict_pipeline.predict(data)
-    
-    # Display the prediction
-    st.success(f"The predicted rating of the restaurant is: {prediction[0]}")
+
+        # Get the DataFrame representation of the input data
+        data = custom_data.get_data_as_data_frame()
+
+        # Create a PredictPipeline instance and make a prediction
+        predict_pipeline = PredictPipeline()
+        prediction = predict_pipeline.predict(data)
+
+        # Display the prediction
+        st.success(f"The predicted rating of the restaurant is: {prediction[0]}")
+    else:
+        st.warning("Please fill all fields.")
 
 # Footer
 st.markdown("#### Created By @Lavish Gangwani")
-
