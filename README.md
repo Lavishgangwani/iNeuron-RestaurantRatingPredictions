@@ -88,7 +88,7 @@ To run this project locally, follow these steps:
 
 ## Deployment
 
-The project is deployed using Streamlit and can be accessed publicly via the following link: [Zomato Bangalore Restaurants Prediction App](https://ineuron-restaurantratingpredictions-lavishgangwani22.streamlit.app/).
+The project is deployed using Streamlit and can be accessed publicly via the following link: [Zomato Bangalore Restaurants Prediction App](https://ineuron-zomato-restaurant-rating-predictions-lavishgw22.streamlit.app/).
 
 ## 🎯 Project Created by
 
