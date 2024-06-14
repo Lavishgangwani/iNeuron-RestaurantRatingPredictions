@@ -74,6 +74,8 @@ city = st.selectbox("City", [
 
 # Predict button
 if st.button("Predict Rating"):
+    if online_order == "" or book_table == "" or rest_type == "" or type == "" or city == "":
+        st.warning("Please fill all fields.")
     # Create a CustomData instance with the input values
     custom_data = CustomData(
         online_order=online_order,
