@@ -6,5 +6,9 @@ scikit-learn
 xgboost
 dill
 streamlit
+fastapi
+pydantic
+uvicorn
+requests
 
 #-e .
